@@ -8,6 +8,7 @@
 
     <meta name="description" content="Student Information System demo using SpringBoot, ThymeLeaf, H2 database"></meta>
     <meta name="author" content="KK"></meta>
+
     <title>Student Information System demo</title>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -24,7 +25,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
-
 </head>
 <body>
 <div class="container-fluid">
@@ -34,8 +34,12 @@
                 <a class="navbar-brand" href="#">Student Information System</a>
             </div>
             <ul class="navbar-nav nav">
-                <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item active"><a class="nav-link" href="/student">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="https://spring.io/projects/spring-boot">About</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span><span th:text="${userName}">User</span></a></li>
+                <li><a href="/signOut"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
             </ul>
         </div>
     </nav>

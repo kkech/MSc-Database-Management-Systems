@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
@@ -33,19 +33,36 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">Student Information System</a>
             </div>
-            <ul class="navbar-nav nav">
-                <li class="nav-item active"><a class="nav-link" href="/student">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="https://spring.io/projects/spring-boot">About</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span><span th:text="${userName}">User</span></a></li>
-                <li><a href="/signOut"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
-            </ul>
         </div>
     </nav>
 
-    <div layout:fragment="content"></div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-default">
+            <div class="panel-heading">Sign In</div>
+            <div class="panel-body">
+                <form method="post" class="form-group" action="/api/noAuth/signIn">
+                    <div class="form-group">
+                        <label for="username"> Username:&nbsp;</label>
+                        <input class="form-control" type="text" name="username" id="username" maxlength="50"/>
+                    </div>
 
+                    <div class="form-group">
+                        <label for="password"> Password:&nbsp;</label>
+                        <input class="form-control" type="password" name="password" id="password" maxlength="50"/>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <i class="glyphicon glyphicon-log-in"></i> Sign in
+                    </button>
+
+                    <div style="margin: auto;width: 100%;text-align: center;padding-top: 10px"><span style="color: red" th:text="${status}">Status</span></div>
+                </form>
+            </div>
+            <div class="panel-footer"><div style="margin: auto;width: 100%;text-align: center;"><a href="/api/noAuth/signUp">Create an account</a></div></div>
+            </div>
+        </div>
+    </div>
     <footer style="text-align:center;">
         <hr/>
         <p>Copyright © 2018 <a href="">KK</a></p>
