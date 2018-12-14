@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html layout:decorator="layout/layout" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
+<body>
+<th:block layout:fragment="content">
+
+    <div class="row">
+        <div class="col-md-4 col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Store Procedure One</div>
+                <div class="panel-body">
+                    <form class="form-group" method="post" action="/api/storeProcedureThree">
+                        <div class="form-group">
+                            <label for="dateString">Start Date:&nbsp;</label>
+                            <input class="form-control" type="date" name="dateString" id="dateString" maxlength="50"/>
+                        </div>
+
+                        <input class="btn btn-primary" type="submit" value="Find"/>
+
+                    </form>
+                </div>
+                <div class="panel-footer"><span th:text="${message}">Execute</span></div>
+            </div>
+        </div>
+
+        <div class="col-md-8 col-sm-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">Result List</div>
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Req Name</th>
+                            <th>Zip</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="result : ${results}">
+                            <td th:text="${result.getRequestName()}">Req Name</td>
+                            <td th:text="${result.getZipCode()}">Zip</td>
+                        </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>

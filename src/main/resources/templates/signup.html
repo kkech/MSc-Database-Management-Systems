@@ -50,13 +50,13 @@
 
                         <div class="form-group">
                             <label for="name"> Name:&nbsp;</label>
-                            <input class="form-control" type="text" name="name" id="name" placeholder="Name" maxlength="20" data-error="Bruh, that email address is invalid" th:required="required"/>
+                            <input class="form-control" type="text" name="name" id="name" placeholder="Name" maxlength="20" data-error="Bruh, that name is invalid" th:required="required"/>
                             <div class="help-block with-errors"></div>
                         </div>
 
                         <div class="form-group">
                             <label for="username"> Username:&nbsp;</label>
-                            <input class="form-control" type="text" name="username" id="username" placeholder="Username" maxlength="20" data-error="Bruh, that email address is invalid" th:required="required"/>
+                            <input class="form-control" type="text" name="username" id="username" placeholder="Username" maxlength="20" data-error="Bruh, that username is invalid" th:required="required"/>
                             <div class="help-block with-errors"></div>
                         </div>
 
@@ -85,7 +85,7 @@
                         <div style="margin: auto;width: 100%;text-align: center;padding-top: 10px"><span style="color: red" th:text="${status}">Status</span></div>
                     </form>
                 </div>
-                <div class="panel-footer"><div style="margin: auto;width: 100%;text-align: center;">Already have an account?-<a href="/api/noAuth/signIn">Sign In</a></div></div>
+                <div class="panel-footer"><div style="margin: auto;width: 100%;text-align: center;">Already have an account?-<a href="/signin">Sign In</a></div></div>
             </div>
         </div>
     </div>

@@ -1,0 +1,305 @@
+<!DOCTYPE HTML>
+<html layout:decorator="layout/layout" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
+<body>
+<th:block layout:fragment="content">
+
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">Add new Student</div>
+            <div class="panel-body">
+                <form class="form-group" method="post" action="/api/insert">
+                    <div class="form-group">
+                        <div class="form-inline row">
+                            <div class="form-group col-sm-6">
+                                <label for="reqNum">Req Num:&nbsp;</label>
+                                <input class="form-control" type="text" name="reqNum" id="reqNum" maxlength="50"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="status">Status:&nbsp;</label>
+                                <select class="form-control" id="status" name="status">
+                                    <option>
+                                        <span>Completed</span>
+                                    </option>
+                                    <option>
+                                        <span>Completed - Dub</span>
+                                    </option>
+                                    <option>
+                                        <span>Open</span>
+                                    </option>
+                                    <option>
+                                        <span>Open - Dub</span>
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-inline row">
+                            <div class="form-group col-sm-6">
+                                <label for="crDate">Creation Date:&nbsp;</label>
+                                <input class="form-control" type="date" name="crDate" id="crDate" maxlength="50"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="cmplDate">Completion Date:&nbsp;</label>
+                                <input class="form-control" type="date" name="cmplDate" id="cmplDate" maxlength="50"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-inline row">
+                            <div class="form-group col-sm-6">
+                                <label for="strAddr">Street Address:&nbsp;</label>
+                                <input class="form-control" type="text" name="strAddr" id="strAddr" maxlength="50"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="zip">Zip Code:&nbsp;</label>
+                                <input class="form-control" type="text" name="zip" id="zip" maxlength="50"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-inline row">
+                            <div class="form-group col-sm-6">
+                                <label for="xCor">X Coordinate:&nbsp;</label>
+                                <input class="form-control" type="text" name="xCor" id="xCor" maxlength="50"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="yCor">Y Coordinate:&nbsp;</label>
+                                <input class="form-control" type="text" name="yCor" id="yCor" maxlength="50"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-inline row">
+                            <div class="form-group col-sm-6">
+                                <label for="longt">Longtitude:&nbsp;</label>
+                                <input class="form-control" type="text" name="longt" id="longt" maxlength="50"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="latit">Latitude:&nbsp;</label>
+                                <input class="form-control" type="text" name="latit" id="latit" maxlength="50"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-inline row">
+                            <div class="form-group col-sm-6">
+                                <label for="ward">Ward:&nbsp;</label>
+                                <input class="form-control" type="text" name="ward" id="ward" maxlength="50"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="polDis">Police District:&nbsp;</label>
+                                <input class="form-control" type="text" name="polDis" id="polDis" maxlength="50"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-inline row">
+                            <div class="form-group col-sm-6">
+                                <label for="comArea">Community Area:&nbsp;</label>
+                                <input class="form-control" type="text" name="comArea" id="comArea" maxlength="50"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="ssa">Ssa:&nbsp;</label>
+                                <input class="form-control" type="text" name="ssa" id="ssa" maxlength="50"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script th:inline="javascript">
+                        /*<![CDATA[*/
+                        function codename() {
+                            console.log(document.getElementById("requestType").value);
+                            document.getElementById("ssa").disabled = "disabled";
+
+                            document.getElementById("mostRecAct").disabled = "disabled";
+                            document.getElementById("curAct").disabled = "disabled";
+                            document.getElementById("licPlat").disabled = "disabled";
+                            document.getElementById("vehMod").disabled = "disabled";
+                            document.getElementById("vehCol").disabled = "disabled";
+                            document.getElementById("dVehRep").disabled = "disabled";
+                            document.getElementById("typOfSur").disabled = "disabled";
+                            document.getElementById("wIsTheGraf").disabled = "disabled";
+                            document.getElementById("premBait").disabled = "disabled";
+                            document.getElementById("premWithGarb").disabled = "disabled";
+
+                            document.getElementById("blaCarDel").disabled = "disabled";
+                            document.getElementById("numOfPothFill").disabled = "disabled";
+                            document.getElementById("natOfCodViol").disabled = "disabled";
+                            document.getElementById("debLoc").disabled = "disabled";
+
+                            document.getElementById("locOfTrees").disabled = "disabled";
+                            document.getElementById("premWithRats").disabled = "disabled";
+                            if(document.getElementById("requestType").value == "Abandoned Vehicle Complaint"){
+                                document.getElementById("mostRecAct").disabled = "";
+                                document.getElementById("curAct").disabled = "";
+                                document.getElementById("licPlat").disabled = "";
+                                document.getElementById("vehMod").disabled = "";
+                                document.getElementById("vehCol").disabled = "";
+                                document.getElementById("dVehRep").disabled = "";
+                                document.getElementById("ssa").disabled = "";
+                            }else if(document.getElementById("requestType").value == "Garbage Cart Black Maintenance/Replacement"){
+                                document.getElementById("mostRecAct").disabled = "";
+                                document.getElementById("curAct").disabled = "";
+                                document.getElementById("blaCarDel").disabled = "";
+                                document.getElementById("ssa").disabled = "";
+                            }else if(document.getElementById("requestType").value == "Pot Hole in Street"){
+                                document.getElementById("mostRecAct").disabled = "";
+                                document.getElementById("curAct").disabled = "";
+                                document.getElementById("numOfPothFill").disabled = "";
+                                document.getElementById("ssa").disabled = "";
+                            }else if(document.getElementById("requestType").value == "Rodent Baiting/Rat Complaint"){
+                                document.getElementById("mostRecAct").disabled = "";
+                                document.getElementById("curAct").disabled = "";
+                                document.getElementById("premBait").disabled = "";
+                                document.getElementById("premWithGarb").disabled = "";
+                                document.getElementById("premWithRats").disabled = "disabled";
+                                document.getElementById("ssa").disabled = "";
+                            }else if(document.getElementById("requestType").value == "Tree Debris"){
+                                document.getElementById("mostRecAct").disabled = "";
+                                document.getElementById("curAct").disabled = "";
+                                document.getElementById("debLoc").disabled = "";
+                            }else if(document.getElementById("requestType").value == "Graffiti Removal"){
+                                document.getElementById("typOfSur").disabled = "";
+                                document.getElementById("wIsTheGraf").disabled = "";
+                                document.getElementById("ssa").disabled = "";
+                            }else if(document.getElementById("requestType").value == "Sanitation Code Violation"){
+                                document.getElementById("natOfCodViol").disabled = "";
+                            }else if(document.getElementById("requestType").value == "Tree Trim"){
+                                document.getElementById("locOfTrees").disabled = "";
+                            }
+
+
+                            return true;
+                        }
+                        $(function() { codename(); });
+                        /*]]>*/
+                    </script>
+                    <div class="form-group">
+                        <label for="requestType">Request Type</label>
+                        <select class="form-control" id="requestType" name="requestType" onchange="codename()">
+                            <option th:each="type : ${types}">
+                                <span th:text="${type.getSrvtName()}"></span>
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-inline row">
+                            <div class="form-group col-sm-6">
+                                <label for="mostRecAct">Most Recent Action:&nbsp;</label>
+                                <input class="form-control" type="text" name="mostRecAct" id="mostRecAct" maxlength="50"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="curAct">Current Activity:&nbsp;</label>
+                                <input class="form-control" type="text" name="curAct" id="curAct" maxlength="50"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-inline row">
+                            <div class="form-group col-sm-6">
+                                <label for="licPlat">License Plate:&nbsp;</label>
+                                <input class="form-control" type="text" name="licPlat" id="licPlat" maxlength="50"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="vehMod">Vehicle Make Model:&nbsp;</label>
+                                <input class="form-control" type="text" name="vehMod" id="vehMod" maxlength="50"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-inline row">
+                            <div class="form-group col-sm-6">
+                                <label for="vehCol">Vehicle Color:&nbsp;</label>
+                                <input class="form-control" type="text" name="vehCol" id="vehCol" maxlength="50"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="dVehRep">Days Vehicle Reported:&nbsp;</label>
+                                <input class="form-control" type="text" name="dVehRep" id="dVehRep" maxlength="50"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-inline row">
+                            <div class="form-group col-sm-6">
+                                <label for="typOfSur">Type Of Surface:&nbsp;</label>
+                                <input class="form-control" type="text" name="typOfSur" id="typOfSur" maxlength="50"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="wIsTheGraf">Where is the Graffity:&nbsp;</label>
+                                <input class="form-control" type="text" name="wIsTheGraf" id="wIsTheGraf" maxlength="50"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-inline row">
+                            <div class="form-group col-sm-6">
+                                <label for="premBait">Premises Baited:&nbsp;</label>
+                                <input class="form-control" type="text" name="premBait" id="premBait" maxlength="50"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="premWithGarb">Premises With Garbage:&nbsp;</label>
+                                <input class="form-control" type="text" name="premWithGarb" id="premWithGarb" maxlength="50"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-inline row">
+                            <div class="form-group col-sm-6">
+                                <label for="blaCarDel">Black Carts Deliverd:&nbsp;</label>
+                                <input class="form-control" type="text" name="blaCarDel" id="blaCarDel" maxlength="50"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="numOfPothFill">Number of Potholes Filled:&nbsp;</label>
+                                <input class="form-control" type="text" name="numOfPothFill" id="numOfPothFill" maxlength="50"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-inline row">
+                            <div class="form-group col-sm-6">
+                                <label for="natOfCodViol">Nature Of Code Violation:&nbsp;</label>
+                                <input class="form-control" type="text" name="natOfCodViol" id="natOfCodViol" maxlength="50"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="debLoc">Debris Located:&nbsp;</label>
+                                <input class="form-control" type="text" name="debLoc" id="debLoc" maxlength="50"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-inline row">
+                            <div class="form-group col-sm-6">
+                                <label for="locOfTrees">Location of Trees:&nbsp;</label>
+                                <input class="form-control" type="text" name="locOfTrees" id="locOfTrees" maxlength="50"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="premWithRats">Premises With Rats:&nbsp;</label>
+                                <input class="form-control" type="text" name="premWithRats" id="premWithRats" maxlength="50"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input class="btn btn-primary" type="submit" value="Save"/>
+                </form>
+            </div>
+            <div class="panel-footer"><span th:text="${message}">Status</span></div>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>

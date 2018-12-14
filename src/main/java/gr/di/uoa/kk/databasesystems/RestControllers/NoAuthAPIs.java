@@ -1,7 +1,6 @@
 package gr.di.uoa.kk.databasesystems.RestControllers;
 
 
-import gr.di.uoa.kk.databasesystems.dto.SignUpDto;
 import gr.di.uoa.kk.databasesystems.entities.Role;
 import gr.di.uoa.kk.databasesystems.entities.User;
 import gr.di.uoa.kk.databasesystems.entities.enums.RoleNameEnum;
@@ -13,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -23,13 +21,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 import java.util.HashSet;
 import java.util.Set;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/noAuth")
+@RequestMapping("/api/noAuth/")
 public class NoAuthAPIs {
 
     private static final Logger logger = LoggerFactory.getLogger(NoAuthAPIs.class);
@@ -49,11 +46,11 @@ public class NoAuthAPIs {
     @Autowired
     JwtProvider jwtProvider;
 
-    @PostMapping(value = "/signIn", consumes = MediaType.ALL_VALUE)
+    @PostMapping(value = "signIn", consumes = MediaType.ALL_VALUE)
     @ResponseStatus(value = HttpStatus.OK)
     public ModelAndView authenticateUser(@RequestParam String username,
                                          @RequestParam String password) {
-        ModelAndView modelAndView = new ModelAndView("student");
+        ModelAndView modelAndView = new ModelAndView("find");
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         username,
@@ -69,7 +66,7 @@ public class NoAuthAPIs {
         return modelAndView;
     }
 
-    @PostMapping(value = "/signUp", consumes = MediaType.ALL_VALUE)
+    @PostMapping(value = "signUp", consumes = MediaType.ALL_VALUE)
     @ResponseStatus(value = HttpStatus.OK)
     public ModelAndView registerUser(HttpSession session,
                                      @RequestParam String username,
@@ -132,7 +129,7 @@ public class NoAuthAPIs {
 //        return ResponseEntity.ok().body("User registered successfully!");
     }
 
-    @GetMapping(value = "/signUp")
+    @GetMapping(value = "signUp")
     @ResponseStatus(value = HttpStatus.OK)
     ModelAndView showSignUp(HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("signup");
@@ -140,20 +137,20 @@ public class NoAuthAPIs {
     }
 
     //This method called by JwtAuthEntryPoint
-    @GetMapping(value = "signIn")
-    @ResponseStatus(value = HttpStatus.OK)
-    ModelAndView showLoginPage(HttpSession session) {
-        //If session does not exists come from sign out
-        if(session == null){
-            ModelAndView modelAndView = new ModelAndView("/signin");
-            return modelAndView;
-        }else {
-            session.invalidate();
-            ModelAndView modelAndView = new ModelAndView("/signin");
-            modelAndView.addObject("status", "Username/Password Incorrect");
-            return modelAndView;
-        }
-    }
+//    @GetMapping(value = "signIn")
+//    @ResponseStatus(value = HttpStatus.OK)
+//    ModelAndView showLoginPage(HttpSession session) {
+//        //If session does not exists come from sign out
+//        if(session == null){
+//            ModelAndView modelAndView = new ModelAndView("signin");
+//            return modelAndView;
+//        }else {
+//            session.invalidate();
+//            ModelAndView modelAndView = new ModelAndView("signin");
+//            modelAndView.addObject("status", "Username/Password Incorrect");
+//            return modelAndView;
+//        }
+//    }
 
 }
 

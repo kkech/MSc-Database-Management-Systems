@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html layout:decorator="layout/layout" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
+<body>
+<th:block layout:fragment="content">
+
+    <div class="row">
+        <div class="col-md-4 col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Find Incident</div>
+                <div class="panel-body">
+                    <form class="form-group" method="post" action="/api/find">
+                        <div class="form-group">
+                            <label for="zip">Zipcode:&nbsp;</label>
+                            <input class="form-control" type="text" name="zip" id="zip" maxlength="50"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="streetAddress">Street Address:&nbsp;</label>
+                            <input class="form-control" type="text" name="streetAddress" id="streetAddress" maxlength="50"/>
+                        </div>
+
+                        <input class="btn btn-primary" type="submit" value="Find"/>
+
+                    </form>
+                </div>
+                <div class="panel-footer"><span th:text="${message}">Status</span></div>
+            </div>
+        </div>
+
+        <div class="col-md-8 col-sm-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">Result List</div>
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Req Id</th>
+                            <th>Service Req Number</th>
+                            <th>Req Type</th>
+                            <th>Creation Date</th>
+                            <th>Status</th>
+                            <th>Completion Date</th>
+                            <th>Street Address</th>
+                            <th>Zip Code</th>
+                            <th>Latitude</th>
+                            <th>Longtitude</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="incident : ${incidents}">
+                            <td th:text="${incident.getReqId()}">Req Id</td>
+                            <td th:text="${incident.getServiceRequestNumber()}">Service Req Number</td>
+                            <td th:text="${incident.getIncidentType().getSrvtName()}">Req Type</td>
+                            <td th:text="${incident.getCreationDate()}">Creation Date</td>
+                            <td th:text="${incident.getStatus()}">Status</td>
+                            <td th:text="${incident.getCompletionDate()}">Completion Date</td>
+                            <td th:text="${incident.getStreetAddress()}">Street Address</td>
+                            <td th:text="${incident.getZipCode()}">Zip Code</td>
+                            <td th:text="${incident.getLatitude()}">Latitude</td>
+                            <td th:text="${incident.getLongtitude()}">Longtitude</td>
+
+
+
+
+
+                            <!--<td><a th:href="@{/students/__${student.getRollNo()}__}" th:text="${student.getName()}">Name</a></td>-->
+                            <!--<td th:text="${student.getDateOfBirthFormatted()}">Date of Birth</td>-->
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>
